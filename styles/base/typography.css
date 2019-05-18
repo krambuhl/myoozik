@@ -35,10 +35,11 @@ strong {
 ol {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 1fr;
   grid-gap: 4px;
   line-height: 1.2em;
   /* list-style: decimal inside; */
-  
+
   li {
     padding: 0.5em;
     color: white;
