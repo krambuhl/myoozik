@@ -53,7 +53,7 @@ export default class IndexPage extends React.Component {
 
         <ol>
           {
-            displaySet.slice(0, 6 * 12 * 4).map(({ key, count }) => (
+            displaySet.slice(0, 6 * 12 * 4 - 1).map(({ key, count }) => (
               <li key={key} style={{ backgroundColor: color(key) }}>{count}<br/><strong>{key}</strong></li>
             ))
           }
