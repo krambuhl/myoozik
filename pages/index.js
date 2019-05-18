@@ -5,6 +5,11 @@ import artists from '@lib/artists.json'
 import albums from '@lib/albums.json'
 import tracks from '@lib/tracks.json'
 
+
+const color = name => {
+  return `#${new Buffer(name).toString('hex').substr(-3)}`
+}
+
 export default class IndexPage extends React.Component {
   static getInitialProps () {
 
@@ -27,8 +32,13 @@ export default class IndexPage extends React.Component {
     this.switchToTracks = setAndForget(() => this.setState({ display: 'tracks' }))
   }
   
-
   render () {
+    const displaySet = (
+      (this.state.display === 'artists' && artists) ||
+      (this.state.display === 'albums' && albums) ||
+      (this.state.display === 'tracks' && tracks)
+    )
+    
     return (
       <PageLayout>
         <ul>
@@ -43,23 +53,8 @@ export default class IndexPage extends React.Component {
 
         <ol>
           {
-            this.state.display === 'artists' &&
-            artists.slice(0, 96).map(({ key, count }) => (
-              <li key={key}><strong>{key}</strong> - {count}</li>
-            ))
-          }
-
-          {
-            this.state.display === 'albums' &&
-            albums.slice(0, 96).map(({ key, count }) => (
-              <li key={key}><strong>{key}</strong> - {count}</li>
-            ))
-          }
-
-          {
-            this.state.display === 'tracks' &&
-            tracks.slice(0, 96).map(({ key, count }) => (
-              <li key={key}><strong>{key}</strong> - {count}</li>
+            displaySet.slice(0, 6 * 12 * 4).map(({ key, count }) => (
+              <li key={key} style={{ backgroundColor: color(key) }}>{count}<br/><strong>{key}</strong></li>
             ))
           }
         </ol>
