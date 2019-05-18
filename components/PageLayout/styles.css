@@ -1,0 +1,8 @@
+.root {
+  padding-top: var(--spacing-medium);
+  padding-bottom: var(--spacing-medium);
+}
+
+.content {
+  margin-top: var(--spacing-large);
+}

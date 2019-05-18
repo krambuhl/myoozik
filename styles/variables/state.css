@@ -1,0 +1,6 @@
+:root {
+  --focus: {
+    outline: solid var(--color-focus) 4px;
+    outline-offset: 1px;
+  };
+}
