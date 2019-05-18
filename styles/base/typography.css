@@ -31,3 +31,11 @@ a {
 strong {
   font-weight: 700;
 }
+
+li:nth-child(8n) {
+  margin-bottom: 1em;  
+}
+
+ol {
+  list-style: decimal inside;
+}

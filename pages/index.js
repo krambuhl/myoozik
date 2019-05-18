@@ -14,7 +14,7 @@ export default class IndexPage extends React.Component {
     super(props);
     
     this.state = {
-      display: 'tracks'
+      display: 'artists'
     }
 
     const setAndForget = (cb) => (ev) => {
@@ -41,28 +41,28 @@ export default class IndexPage extends React.Component {
         <hr />
         <br />
 
-        <ul>
+        <ol>
           {
             this.state.display === 'artists' &&
-            artists.map(({ key, count }) => (
+            artists.slice(0, 96).map(({ key, count }) => (
               <li key={key}><strong>{key}</strong> - {count}</li>
             ))
           }
 
           {
             this.state.display === 'albums' &&
-            albums.map(({ key, count }) => (
+            albums.slice(0, 96).map(({ key, count }) => (
               <li key={key}><strong>{key}</strong> - {count}</li>
             ))
           }
 
           {
             this.state.display === 'tracks' &&
-            tracks.map(({ key, count }) => (
+            tracks.slice(0, 96).map(({ key, count }) => (
               <li key={key}><strong>{key}</strong> - {count}</li>
             ))
           }
-        </ul>
+        </ol>
       </PageLayout>
     )
   }
